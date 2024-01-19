@@ -1,43 +1,64 @@
 package toolsqatests;
 
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Selenide.open;
+import pages.RegistrationPage;
 
 public class FillToolsQaFormTests {
 
+    @BeforeEach
+    void baseSteps() {
+        registrationPage.openPage()
+                .setFirstName("Veronika")
+                .setLastName("Golikova");
+    }
+
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
+    }
+
+    RegistrationPage registrationPage = new RegistrationPage();
     @Test
     void fillToolsQaFormTest() {
-        open("https://demoqa.com/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        $("#firstName").setValue("Veronika");
-        $("#lastName").setValue("Golikova");
-        $("#userEmail").setValue("someEmail@mail.ru");
-        $("#genterWrapper").$(byText("Female")).click();
-        $("#userNumber").setValue("7909111111");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("1990");
-        $(".react-datepicker__day--007").click();
-        $("#subjectsInput").setValue("math").pressEnter();
-        $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFromClasspath("1.png");
-        $("#currentAddress").setValue("Чертановская 41");
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Noida")).click();
-        $("#submit").click();
+        registrationPage
+                .setEmail("someEmail@mail.ru")
+                .setGender("Female")
+                .setPhoneNumber("7909111111")
+                .openCalendar("07", "July", "1990")
+                .setSubject("math")
+                .setHobbie("Reading")
+                .uploadPicture("1.png")
+                .setAddress("Чертановская 41")
+                .selectStateAndCity("NCR", "Noida")
+                .submit()
+                .modalAppear("Thanks for submitting the form")
+                .minValueAssertion("Veronika", "Golikova", "7909111111", "Female",
+                        "07 July,1990")
+                .secondaryValueAssertion("someEmail@mail.ru", "Maths", "Reading",
+                        "Чертановская 41","NCR Noida");
+    }
 
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Veronika"), text("Golikova"), text("someEmail@mail.ru"), text("7909111111"));
-        $(".table-responsive").shouldHave(text("Female"), text("07 July,1990"), text("Maths"));
-        $(".table-responsive").shouldHave(text("Reading"), text("Чертановская 41"), text("NCR Noida"));
+    @Test
+    void fillToolsQaFormWithMinDataTest() {
+        registrationPage
+                .setGender("Female")
+                .setPhoneNumber("7909111111")
+                .openCalendar("07", "July", "1990")
+                .submit()
+                .modalAppear("Thanks for submitting the form")
+                .minValueAssertion("Veronika", "Golikova", "7909111111", "Female",
+                        "07 July,1990");
+    }
+
+    @Test
+    void fillToolsQaFormNegativeTest() {
+        registrationPage
+                .setEmail("someEmail@mail.ru")
+                .submit()
+                .modalNotAppear()
+                .userFormWasValidated("was-validated");
     }
 }
