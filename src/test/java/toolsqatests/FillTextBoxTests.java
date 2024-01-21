@@ -1,19 +1,17 @@
 package toolsqatests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
-import pages.components.TextBoxPage;
+import pages.TextBoxPage;
 
 public class FillTextBoxTests {
 
     @BeforeEach
-    void baseSteps() {
-        textBoxPage.openPage()
-                .setName("Veronika")
-                .setEmail("someEmail@mail.ru");
+    void beforeEach() {
+        Configuration.pageLoadStrategy = "eager";
     }
 
     @AfterEach
@@ -24,7 +22,9 @@ public class FillTextBoxTests {
     TextBoxPage textBoxPage = new TextBoxPage();
     @Test
     void fillTextBoxWithAllDataTest() {
-        textBoxPage
+        textBoxPage.openPage()
+                .setName("Veronika")
+                .setEmail("someEmail@mail.ru")
                 .setCurrentAddress("Чертановская 41")
                 .setPermanentAddress("Чертановская 42")
                 .submit()
@@ -37,7 +37,9 @@ public class FillTextBoxTests {
 
     @Test
     void fillTextBoxWithNameEmailTest() {
-        textBoxPage
+        textBoxPage.openPage()
+                .setName("Veronika")
+                .setEmail("someEmail@mail.ru")
                 .submit()
                 .outputAppear()
                 .nameHasValue("Veronika")

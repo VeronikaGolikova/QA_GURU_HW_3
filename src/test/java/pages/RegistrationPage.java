@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class RegistrationPage {
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderInput = $("#genterWrapper"),
