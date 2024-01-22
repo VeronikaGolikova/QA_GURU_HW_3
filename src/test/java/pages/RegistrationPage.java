@@ -35,7 +35,7 @@ public class RegistrationPage {
     Calendar calendar = new Calendar();
 
     public RegistrationPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open("automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;

@@ -1,23 +1,9 @@
 package toolsqatests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-public class FillToolsQaFormTests {
-
-    @BeforeEach
-    void beforeEach() {
-        Configuration.pageLoadStrategy = "eager";
-    }
-
-    @AfterEach
-    void afterEach() {
-        Selenide.closeWebDriver();
-    }
+public class FillToolsQaFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     @Test

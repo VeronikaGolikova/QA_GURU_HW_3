@@ -1,23 +1,9 @@
 package toolsqatests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
-public class FillTextBoxTests {
-
-    @BeforeEach
-    void beforeEach() {
-        Configuration.pageLoadStrategy = "eager";
-    }
-
-    @AfterEach
-    void afterEach() {
-        Selenide.closeWebDriver();
-    }
+public class FillTextBoxTests extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
     @Test

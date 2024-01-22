@@ -21,7 +21,7 @@ public class TextBoxPage {
             permanentAddressOutput = $("#permanentAddress");
 
     public TextBoxPage openPage() {
-        open("https://demoqa.com/text-box");
+        open("text-box");
         return this;
     }
 
