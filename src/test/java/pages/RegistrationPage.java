@@ -11,6 +11,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
+import static utils.RandomUtils.getRundomGender;
+import static utils.RandomUtils.getRundomLetterForSubj;
+import static utils.RandomUtils.getRundomPhoneNumber;
 
 public class RegistrationPage {
     private final SelenideElement firstNameInput = $("#firstName"),
@@ -127,9 +130,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage secondaryValueAssertion(String email, String subject, String hobbie, String address,
+    public RegistrationPage secondaryValueAssertion(String email, String hobbie, String address,
                                               String location) {
-        modalData.shouldHave(text(email), text(subject),  text(hobbie), text(address), text(location));
+        modalData.shouldHave(text(email), text(hobbie), text(address), text(location));
         return this;
     }
 }
