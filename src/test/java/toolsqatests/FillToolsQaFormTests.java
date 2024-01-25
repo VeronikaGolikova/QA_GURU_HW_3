@@ -3,38 +3,31 @@ package toolsqatests;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import utils.RandomUtils;
 
 import java.util.Locale;
 
-import static utils.RandomUtils.getRandomInt;
-import static utils.RandomUtils.getRandomCity;
-import static utils.RandomUtils.getRandomDate;
-import static utils.RandomUtils.getRandomGender;
-import static utils.RandomUtils.getRandomHobbie;
-import static utils.RandomUtils.getRandomLetterForSubj;
-import static utils.RandomUtils.getRandomMonth;
-import static utils.RandomUtils.getRandomPhoneNumber;
-import static utils.RandomUtils.getRandomState;
-
+import static utils.RandomUtils.*;
 
 public class FillToolsQaFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker(new Locale("ru"));
     Faker enFaker = new Faker();
+    RandomUtils randomUtils = new RandomUtils();
     String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             email = enFaker.internet().emailAddress(),
             address = faker.address().streetAddress(),
-            gender = getRandomGender(),
-            phoneNumber = getRandomPhoneNumber(10),
-            month = getRandomMonth(),
+            gender = randomUtils.getRandomGender(),
+            phoneNumber = randomUtils.getRandomPhoneNumber(10),
+            month = randomUtils.getRandomMonth(),
             date = getRandomDate(),
             year = String.valueOf(getRandomInt(1950, 2010)),
-            subject = getRandomLetterForSubj(),
-            hobbie = getRandomHobbie(),
-            state = getRandomState(),
-            city = getRandomCity(state),
+            subject = randomUtils.getRandomLetterForSubj(),
+            hobbie = randomUtils.getRandomHobbie(),
+            state = randomUtils.getRandomState(),
+            city = randomUtils.getRandomCity(state),
             picture = "1.png",
             message = "Thanks for submitting the form",
             validated = "was-validated";
