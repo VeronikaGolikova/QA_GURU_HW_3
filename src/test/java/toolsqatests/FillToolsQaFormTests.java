@@ -7,14 +7,14 @@ import pages.RegistrationPage;
 import java.util.Locale;
 
 import static utils.RandomUtils.getRandomInt;
-import static utils.RandomUtils.getRundomCity;
-import static utils.RandomUtils.getRundomDate;
-import static utils.RandomUtils.getRundomGender;
-import static utils.RandomUtils.getRundomHobbie;
-import static utils.RandomUtils.getRundomLetterForSubj;
-import static utils.RandomUtils.getRundomMonth;
-import static utils.RandomUtils.getRundomPhoneNumber;
-import static utils.RandomUtils.getRundomState;
+import static utils.RandomUtils.getRandomCity;
+import static utils.RandomUtils.getRandomDate;
+import static utils.RandomUtils.getRandomGender;
+import static utils.RandomUtils.getRandomHobbie;
+import static utils.RandomUtils.getRandomLetterForSubj;
+import static utils.RandomUtils.getRandomMonth;
+import static utils.RandomUtils.getRandomPhoneNumber;
+import static utils.RandomUtils.getRandomState;
 
 
 public class FillToolsQaFormTests extends TestBase {
@@ -26,15 +26,15 @@ public class FillToolsQaFormTests extends TestBase {
             lastName = faker.name().lastName(),
             email = enFaker.internet().emailAddress(),
             address = faker.address().streetAddress(),
-            gender = getRundomGender(),
-            phoneNumber = getRundomPhoneNumber(10),
-            month = getRundomMonth(),
-            date = getRundomDate(),
+            gender = getRandomGender(),
+            phoneNumber = getRandomPhoneNumber(10),
+            month = getRandomMonth(),
+            date = getRandomDate(),
             year = String.valueOf(getRandomInt(1950, 2010)),
-            subject = getRundomLetterForSubj(),
-            hobbie = getRundomHobbie(),
-            state = getRundomState(),
-            city = getRundomCity(state),
+            subject = getRandomLetterForSubj(),
+            hobbie = getRandomHobbie(),
+            state = getRandomState(),
+            city = getRandomCity(state),
             picture = "1.png",
             message = "Thanks for submitting the form",
             validated = "was-validated";

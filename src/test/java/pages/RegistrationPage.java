@@ -10,10 +10,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
-import static utils.RandomUtils.getRundomGender;
-import static utils.RandomUtils.getRundomLetterForSubj;
-import static utils.RandomUtils.getRundomPhoneNumber;
 
 public class RegistrationPage {
     private final SelenideElement firstNameInput = $("#firstName"),

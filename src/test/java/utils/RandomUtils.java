@@ -1,6 +1,7 @@
 package utils;
 
-import java.security.SecureRandom;
+import com.github.javafaker.Faker;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
@@ -9,58 +10,52 @@ public class RandomUtils {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-    public static String getRundomGender() {
+    public static String getRandomGender() {
+        Faker faker = new Faker();
         String[] genders = {"Male", "Female", "Other"};
-        int index = getRandomInt(0, genders.length - 1);
-        return genders[index];
+        return faker.options().option(genders);
     }
 
-    public static String getRundomPhoneNumber(int len) {
-        String symbol = "0123456789";
-
-        SecureRandom rnd = new SecureRandom();
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 0; i < len; i++)
-            result.append(symbol.charAt(rnd.nextInt(symbol.length())));
-
-        return result.toString();
+    public static String getRandomPhoneNumber(int len) {
+        Faker faker = new Faker();
+        return faker.phoneNumber().subscriberNumber(10);
     }
 
-    public static String getRundomMonth() {
+    public static String getRandomMonth() {
+        Faker faker = new Faker();
         String[] month = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
-        int index = getRandomInt(0, month.length - 1);
-        return month[index];
+        return faker.options().option(month);
     }
 
-    public static String getRundomDate() {
-        String rundomDate = String.valueOf(getRandomInt(1, 28));
-        if (rundomDate.length() == 1) {
-            rundomDate = "0" + rundomDate;
+    public static String getRandomDate() {
+        String randomDate = String.valueOf(getRandomInt(1, 28));
+        if (randomDate.length() == 1) {
+            randomDate = "0" + randomDate;
         };
-        return rundomDate;
+        return randomDate;
     }
 
-    public static String getRundomLetterForSubj() {
+    public static String getRandomLetterForSubj() {
+        Faker faker = new Faker();
         String[] subj = {"e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "g", "h", "l", "c", "v", "b", "n", "m"};
-        int index = getRandomInt(0, subj.length - 1);
-        return subj[index];
+        return faker.options().option(subj);
     }
 
-    public static String getRundomHobbie() {
+    public static String getRandomHobbie() {
+        Faker faker = new Faker();
         String[] hobbie = {"Sports", "Reading", "Music"};
-        int index = getRandomInt(0, hobbie.length - 1);
-        return hobbie[index];
+        return faker.options().option(hobbie);
     }
 
-    public static String getRundomState() {
+    public static String getRandomState() {
+        Faker faker = new Faker();
         String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-        int index = getRandomInt(0, state.length - 1);
-        return state[index];
+        return faker.options().option(state);
     }
 
-    public static String getRundomCity(String state) {
+    public static String getRandomCity(String state) {
+        Faker faker = new Faker();
         String[] city = null;
         if(state.equals("NCR")) {
             city = new String[]{"Delhi", "Gurgaon", "Noida"};
@@ -71,7 +66,6 @@ public class RandomUtils {
         } else if (state.equals("Rajasthan")) {
             city = new String[]{"Jaipur", "Jaiselmer"};
         }
-        int index = getRandomInt(0, city.length - 1);
-        return city[index];
+        return faker.options().option(city);
     }
 }
