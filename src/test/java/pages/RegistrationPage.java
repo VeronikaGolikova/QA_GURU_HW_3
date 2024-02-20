@@ -29,12 +29,14 @@ public class RegistrationPage {
             modalDialog = $(".modal-dialog"),
             modalTitle = $("#example-modal-sizes-title-lg"),
             modalData = $(".table-responsive"),
-            userForm = $("#userForm");
+            userForm = $("#userForm"),
+            bannerRoot = $(".fc-consent-root");
 
     Calendar calendar = new Calendar();
 
     public RegistrationPage openPage() {
         open("automation-practice-form");
+            bannerRoot.$(byText("Consent")).click();
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;

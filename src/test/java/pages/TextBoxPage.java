@@ -5,7 +5,9 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.value;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxPage {
@@ -18,10 +20,14 @@ public class TextBoxPage {
             nameOutput = $("#name"),
             emailOutput = $("#email"),
             currentAddressOutput = $("#currentAddress"),
-            permanentAddressOutput = $("#permanentAddress");
+            permanentAddressOutput = $("#permanentAddress"),
+            bannerRoot = $(".fc-consent-root");
 
     public TextBoxPage openPage() {
         open("text-box");
+        bannerRoot.$(byText("Consent")).click();
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         return this;
     }
 
