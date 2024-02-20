@@ -1,4 +1,4 @@
-package toolsqatests;
+package test.toolsqatests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

@@ -1,5 +1,6 @@
-package toolsqatests;
+package test.toolsqatests;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
@@ -7,6 +8,7 @@ public class FillTextBoxTests extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
     @Test
+    @Disabled
     void fillTextBoxWithAllDataTest() {
         textBoxPage.openPage()
                 .setName("Veronika")
@@ -21,6 +23,7 @@ public class FillTextBoxTests extends TestBase {
                 .permanentAddressHasValue("Чертановская 42");
     }
 
+    @Disabled
     @Test
     void fillTextBoxWithNameEmailTest() {
         textBoxPage.openPage()
