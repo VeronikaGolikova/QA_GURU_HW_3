@@ -1,7 +1,7 @@
 package test.toolsqatests;
 
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import static utils.RandomUtils.*;
 
+@Tag("regress")
 public class FillToolsQaFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
@@ -34,7 +35,6 @@ public class FillToolsQaFormTests extends TestBase {
             validated = "was-validated";
 
     @Test
-    @Disabled
     void fillToolsQaFormTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
@@ -57,7 +57,6 @@ public class FillToolsQaFormTests extends TestBase {
     }
 
     @Test
-    @Disabled
     void fillToolsQaFormWithMinDataTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
@@ -72,7 +71,6 @@ public class FillToolsQaFormTests extends TestBase {
     }
 
     @Test
-    @Disabled
     void fillToolsQaFormNegativeTest() {
         registrationPage.openPage()
                 .setFirstName(firstName)
