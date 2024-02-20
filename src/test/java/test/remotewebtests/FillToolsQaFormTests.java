@@ -1,4 +1,4 @@
-package test.toolsqatests;
+package test.remotewebtests;
 
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Tag;
@@ -8,8 +8,10 @@ import utils.RandomUtils;
 
 import java.util.Locale;
 
-import static utils.RandomUtils.*;
+import static utils.RandomUtils.getRandomDate;
+import static utils.RandomUtils.getRandomInt;
 
+@Tag("regress")
 public class FillToolsQaFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();

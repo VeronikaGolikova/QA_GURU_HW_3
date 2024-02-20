@@ -1,10 +1,10 @@
-package test.toolsqatests;
+package test.remotewebtests;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
+@Tag("regress")
 public class FillTextBoxTests extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
