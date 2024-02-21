@@ -1,12 +1,13 @@
 package test.remotewebtests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -17,6 +18,8 @@ import java.util.Locale;
 import static utils.RandomUtils.getRandomDate;
 import static utils.RandomUtils.getRandomInt;
 
+@Owner("golikovavi")
+@Feature("Проверка формы Tools Qa")
 @Tag("regress")
 public class FillToolsQaFormTests extends TestBase{
 
@@ -42,7 +45,10 @@ public class FillToolsQaFormTests extends TestBase{
             validated = "was-validated";
 
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Заполнение всех полей формы")
     void fillToolsQaFormTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -64,7 +70,10 @@ public class FillToolsQaFormTests extends TestBase{
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Заполнение обязательных полей формы")
     void fillToolsQaFormWithMinDataTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -78,7 +87,10 @@ public class FillToolsQaFormTests extends TestBase{
     }
 
     @Test
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Проверка валидации при незаполненных обязательных полях")
     void fillToolsQaFormNegativeTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)

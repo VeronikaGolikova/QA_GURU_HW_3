@@ -1,25 +1,27 @@
 package test.remotewebtests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-
+@Owner("golikovavi")
+@Feature("Проверка формы Text Box")
 @Tag("regress")
 public class FillTextBoxTests extends TestBase{
 
     TextBoxPage textBoxPage = new TextBoxPage();
     @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Заполнение всех полей формы Text Box")
     void fillTextBoxWithAllDataTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         textBoxPage.openPage()
                 .setName("Veronika")
                 .setEmail("someEmail@mail.ru")
@@ -34,7 +36,10 @@ public class FillTextBoxTests extends TestBase{
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Заполнение полей имя и email в форме Text Box")
     void fillTextBoxWithNameEmailTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
         textBoxPage.openPage()
                 .setName("Veronika")
                 .setEmail("someEmail@mail.ru")

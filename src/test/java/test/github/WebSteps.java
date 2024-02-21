@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.By.linkText;
 
-public class WebSteps extends TestBase{
+public class WebSteps{
 
     @Step("Открываем главную страницу")
     public void openMainPage() {
