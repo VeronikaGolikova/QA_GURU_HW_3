@@ -1,6 +1,9 @@
 package test.toolsqatests;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import utils.RandomUtils;
@@ -9,6 +12,9 @@ import java.util.Locale;
 
 import static utils.RandomUtils.*;
 
+@Owner("golikovavi")
+@Feature("Проверка формы Tools Qa")
+@Tag("local")
 public class FillToolsQaFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();

@@ -1,8 +1,14 @@
 package test.toolsqatests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
+@Owner("golikovavi")
+@Feature("Проверка формы Tools Qa")
+@Tag("local")
 public class FillTextBoxTests extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();

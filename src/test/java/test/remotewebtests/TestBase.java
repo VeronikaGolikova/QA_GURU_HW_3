@@ -15,8 +15,16 @@ public class TestBase {
 
     @BeforeEach
     void beforeEach() {
+        String browser = System.getProperty("browser", "chrome");
+        String browserVersion = System.getProperty("browser_version", "100.0");
+        String browserSize = System.getProperty("browser_size", "1920x1080");
+        String browserConfig = String.format("Browser: %s, version: %s, window size: %s",
+                browser, browserVersion, browserSize);
+        System.out.println(browserConfig);
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
+        Configuration.browser = browser;
+        Configuration.browserVersion = browserVersion;
+        Configuration.browserSize = browserSize;
         Configuration.baseUrl = "https://demoqa.com/";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
