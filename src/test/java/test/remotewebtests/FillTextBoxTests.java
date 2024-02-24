@@ -1,11 +1,13 @@
 package test.remotewebtests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.DataConfig;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,13 @@ import pages.TextBoxPage;
 @Owner("golikovavi")
 @Feature("Проверка формы Text Box")
 @Tag("regress")
+@Tag("owner")
 public class FillTextBoxTests extends TestBase{
+    DataConfig dataConfig = ConfigFactory.create(DataConfig.class);
+    String name = dataConfig.name();
+    String email = dataConfig.email();
+    String currentAddress = dataConfig.currentAddress();
+    String permanentAddress = dataConfig.permanentAddress();
 
     TextBoxPage textBoxPage = new TextBoxPage();
     @Test
@@ -23,16 +31,16 @@ public class FillTextBoxTests extends TestBase{
     void fillTextBoxWithAllDataTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         textBoxPage.openPage()
-                .setName("Veronika")
-                .setEmail("someEmail@mail.ru")
-                .setCurrentAddress("Чертановская 41")
-                .setPermanentAddress("Чертановская 42")
+                .setName(name)
+                .setEmail(email)
+                .setCurrentAddress(currentAddress)
+                .setPermanentAddress(permanentAddress)
                 .submit()
                 .outputAppear()
-                .nameHasValue("Veronika")
-                .emailHasValue("someEmail@mail.ru")
-                .currentAddressHasValue("Чертановская 41")
-                .permanentAddressHasValue("Чертановская 42");
+                .nameHasValue(name)
+                .emailHasValue(email)
+                .currentAddressHasValue(currentAddress)
+                .permanentAddressHasValue(permanentAddress);
     }
 
     @Test
@@ -41,12 +49,12 @@ public class FillTextBoxTests extends TestBase{
     void fillTextBoxWithNameEmailTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         textBoxPage.openPage()
-                .setName("Veronika")
-                .setEmail("someEmail@mail.ru")
+                .setName(name)
+                .setEmail(email)
                 .submit()
                 .outputAppear()
-                .nameHasValue("Veronika")
-                .emailHasValue("someEmail@mail.ru");
+                .nameHasValue(name)
+                .emailHasValue(email);
     }
 
 }
