@@ -26,7 +26,7 @@ public class TestBase {
         Configuration.browser = browser;
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-        Configuration.baseUrl = "https://demoqa.com/";
+        Configuration.baseUrl = "https://www.cian.ru/";
         Configuration.remote = remoteUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

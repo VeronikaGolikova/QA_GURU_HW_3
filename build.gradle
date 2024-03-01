@@ -49,12 +49,6 @@ tasks.withType(Test) {
     }
 }
 
-task simple_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("regress")
-    }
-}
-
 task local_regress(type: Test) {
     useJUnitPlatform {
         includeTags("local")
